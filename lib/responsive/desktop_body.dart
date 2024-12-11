@@ -7,20 +7,18 @@ class DesktopBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: AspectRatio(
-                aspectRatio: 16 / 2,
-                child: IntroductionSection(isMobile: false),
-              ),
+    return CustomScrollView(
+      slivers: [
+        SliverFillViewport(
+          delegate: SliverChildListDelegate([
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: IntroductionSection(isMobile: false),
             ),
-          ),
-        ],
-      ),
+            // Próximas secciones
+          ]),
+        ),
+      ],
     );
   }
 }
