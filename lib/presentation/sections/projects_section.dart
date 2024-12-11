@@ -54,14 +54,14 @@ class ProjectsSection extends StatelessWidget {
                 ),
               ),
               
-              const SizedBox(height: 20),
+              SizedBox(height: isMobile ? height * 0.03 : height * 0.05),
 
               GridView(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: isMobile ? 1 : 3, // 3 proyectos por fila en desktop y 1 en móvil
-                  childAspectRatio: isMobile ? 0.88 : 1,
+                  childAspectRatio: isMobile ? 0.82 : 1,
                   crossAxisSpacing: 20,
                   mainAxisSpacing: 20,
                 ),

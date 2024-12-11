@@ -15,39 +15,38 @@ class IntroductionSection extends StatelessWidget {
     final height = MediaQuery.of(context).size.height;
 
     return Center(
-      child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+      
+          SizedBox(height: isMobile ? height * 0.02 : height * 0.1),
+      
+          // Foto de perfil
+          const _HeaderPhoto(),
+          
+          const SizedBox(height: 30),
+          
+          // Notificación flotante
+          const JobNotification(),
+          
+          const SizedBox(height: 30),
+          
+          // Texto de presentación
+          const _TextPresentation(),
+          
+          const SizedBox(height: 30),
+          
+          // Botones de links
+          const LinkButtons(),
+          
+          SizedBox(height: isMobile ? height * 0.09 : height * 0.2),
+          
+          // Flecha hacia abajo para indicar scroll
+          const _ArrowDown(),
 
-            SizedBox(height: isMobile ? height * 0.02 : height * 0.1),
+          SizedBox(height: isMobile ? height * 0.09 : 0),
 
-            // Foto de perfil
-            const _HeaderPhoto(),
-            
-            const SizedBox(height: 30),
-            
-            // Notificación flotante
-            const JobNotification(),
-            
-            const SizedBox(height: 30),
-            
-            // Texto de presentación
-            const _TextPresentation(),
-            
-            const SizedBox(height: 30),
-            
-            // Botones de links
-            const LinkButtons(),
-            
-            SizedBox(height: isMobile ? height * 0.05 : height * 0.2),
-            
-            // Flecha hacia abajo para indicar scroll
-            const _ArrowDown(),
-            
-            const SizedBox(height: 30),
-          ],
-        ),
+        ],
       ),
     );
   }
@@ -144,6 +143,7 @@ class _TextPresentation extends StatelessWidget {
 
               return Column(
                 children: [
+
                   SizedBox(
                     width: screenWidth * factor,
                     child: Text(
@@ -152,7 +152,9 @@ class _TextPresentation extends StatelessWidget {
                       textAlign: TextAlign.center,
                     ),
                   ),
+
                   const SizedBox(height: 20),
+
                   SizedBox(
                     width: screenWidth * factor,
                     child: RichText(
@@ -194,6 +196,7 @@ class _TextPresentation extends StatelessWidget {
                         ],
                       ),
                     ),
+
                   ),
                 ],
               );

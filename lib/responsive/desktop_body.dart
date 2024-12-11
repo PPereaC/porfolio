@@ -8,6 +8,9 @@ class DesktopBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final height = MediaQuery.of(context).size.height;
+
     return CustomScrollView(
       slivers: [
         SliverList(
@@ -16,7 +19,7 @@ class DesktopBody extends StatelessWidget {
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: IntroductionSection(isMobile: false),
             ),
-            const SizedBox(height: 50),
+            SizedBox(height: height * 0.1),
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: ProjectsSection(isMobile: false),

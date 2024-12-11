@@ -7,17 +7,22 @@ class MobileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
+    final height = MediaQuery.of(context).size.height;
+
     return CustomScrollView(
       slivers: [
         // Sección de introducción
-        SliverToBoxAdapter(
+        const SliverToBoxAdapter(
           child: SizedBox(
-            height: MediaQuery.of(context).size.height,
-            child: const Padding(
+            child: Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: IntroductionSection(isMobile: true),
             ),
           ),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(height: height * 0.05),
         ),
         const SliverToBoxAdapter(
           child: Padding(
@@ -26,7 +31,7 @@ class MobileBody extends StatelessWidget {
           ),
         ),
         const SliverToBoxAdapter(
-          child: SizedBox(height: 50),
+          child: SizedBox(height: 28),
         ),
       ],
     );
