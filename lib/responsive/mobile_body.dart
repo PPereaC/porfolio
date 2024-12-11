@@ -1,36 +1,21 @@
 import 'package:flutter/material.dart';
 
+import '../presentation/sections/introduction_section.dart';
+
 class MobileBody extends StatelessWidget {
   const MobileBody({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.green[300],
-      appBar: AppBar(
-        title: const Text('M O B I L E'),
-      ),
-      body: Column(
+    return const Center(
+      child: Column(
         children: [
           Expanded(
             child: Padding(
-              padding: const EdgeInsets.all(8),
+              padding: EdgeInsets.all(8),
               child: AspectRatio(
                 aspectRatio: 16 / 2,
-                child: Container(
-                  color: Colors.green[400],
-                ),
-              ),
-            ),
-          ),
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.all(8),
-              child: AspectRatio(
-                aspectRatio: 16 / 2,
-                child: Container(
-                  color: Colors.yellow[400],
-                ),
+                child: IntroductionSection()
               ),
             ),
           ),

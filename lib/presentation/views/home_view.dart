@@ -13,10 +13,23 @@ class HomeView extends StatefulWidget {
 class _HomeViewState extends State<HomeView> {
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      body: ResponsiveLayout(
-        mobileBody: MobileBody(),
-        desktopBody: DesktopBody()
+    return Scaffold(
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Image.asset(
+              'assets/images/fondo.png',
+              fit: BoxFit.cover,
+            ),
+          ),
+
+          // Contenido Principal
+          const ResponsiveLayout(
+            mobileBody: MobileBody(),
+            desktopBody: DesktopBody()
+          ),
+          
+        ]
       ),
     );
   }
