@@ -1,6 +1,8 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
+import '../widgets/job_notification.dart';
+
 class IntroductionSection extends StatelessWidget {
   const IntroductionSection({super.key});
 
@@ -17,7 +19,7 @@ class IntroductionSection extends StatelessWidget {
             SizedBox(height: 30),
             
             // Notificación flotante
-            // const JobNotification(),
+            JobNotification(),
             
             SizedBox(height: 30),
             
@@ -218,9 +220,11 @@ class __ArrowDownState extends State<_ArrowDown> {
           _animate = true;
         });
         await Future.delayed(const Duration(milliseconds: 800));
-        setState(() {
-          _animate = false;
-        });
+        if (mounted) {
+          setState(() {
+            _animate = false;
+          });
+        }
         await Future.delayed(const Duration(seconds: 8));
       } else {
         await Future.delayed(const Duration(milliseconds: 100));
@@ -246,15 +250,23 @@ class __ArrowDownState extends State<_ArrowDown> {
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    return Bounce(
-      animate: _animate,
-      from: 8,
-      duration: const Duration(milliseconds: 800),
-      child: Icon(
-        Icons.keyboard_arrow_down_rounded,
-        size: 40,
-        color: colors.primary,
-      ),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          _isResizing = false;
+        });
+
+        return Bounce(
+          animate: _animate,
+          from: 8,
+          duration: const Duration(milliseconds: 800),
+          child: Icon(
+            Icons.keyboard_arrow_down_rounded,
+            size: 40,
+            color: colors.primary,
+          ),
+        );
+      },
     );
   }
 }
