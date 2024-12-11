@@ -20,7 +20,7 @@ class IntroductionSection extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
-            SizedBox(height: isMobile ? height * 0.03 : height * 0.1),
+            SizedBox(height: isMobile ? height * 0.02 : height * 0.1),
 
             // Foto de perfil
             const _HeaderPhoto(),

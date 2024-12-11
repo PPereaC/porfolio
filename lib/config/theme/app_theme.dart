@@ -28,9 +28,9 @@ class AppTheme {
       colorScheme: colorScheme,
       fontFamily: 'Onest',
       textTheme: const TextTheme(
-        titleLarge: TextStyle(fontSize: 55, fontWeight: FontWeight.bold, color: Colors.white),
+        titleLarge: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, color: Colors.white),
         titleMedium: TextStyle(fontSize: 32, fontWeight: FontWeight.bold, color: Colors.white),
-        bodyLarge: TextStyle(fontSize: 18, color: Colors.white),
+        bodyLarge: TextStyle(fontSize: 20, color: Colors.white),
         bodyMedium: TextStyle(fontSize: 14, color: Colors.white),
         labelLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
       ),
