@@ -15,7 +15,7 @@ class DesktopBody extends StatelessWidget {
               padding: EdgeInsets.all(8),
               child: AspectRatio(
                 aspectRatio: 16 / 2,
-                child: IntroductionSection()
+                child: IntroductionSection(isMobile: false),
               ),
             ),
           ),

@@ -1,42 +1,51 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
 
-import '../widgets/job_notification.dart';
+import '../widgets/widgets.dart';
 
 class IntroductionSection extends StatelessWidget {
-  const IntroductionSection({super.key});
+
+  final bool isMobile;
+
+  const IntroductionSection({super.key, required this.isMobile});
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
+
+    final height = MediaQuery.of(context).size.height;
+
+    return Center(
       child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+
+            SizedBox(height: isMobile ? height * 0.03 : height * 0.1),
+
             // Foto de perfil
-            _HeaderPhoto(),
+            const _HeaderPhoto(),
             
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             
             // Notificación flotante
-            JobNotification(),
+            const JobNotification(),
             
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             
             // Texto de presentación
-            _TextPresentation(),
+            const _TextPresentation(),
             
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
             
             // Botones de links
-            // const LinkButtons(),
+            const LinkButtons(),
             
-            SizedBox(height: 150),
+            SizedBox(height: isMobile ? height * 0.05 : height * 0.2),
             
             // Flecha hacia abajo para indicar scroll
-            _ArrowDown(),
+            const _ArrowDown(),
             
-            SizedBox(height: 30),
+            const SizedBox(height: 30),
           ],
         ),
       ),
