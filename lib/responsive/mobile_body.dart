@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../presentation/sections/introduction_section.dart';
 
 class MobileBody extends StatelessWidget {
@@ -7,20 +6,19 @@ class MobileBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Column(
-        children: [
-          Expanded(
-            child: Padding(
-              padding: EdgeInsets.all(8),
-              child: AspectRatio(
-                aspectRatio: 16 / 2,
-                child: IntroductionSection(isMobile: true)
-              ),
+    return CustomScrollView(
+      slivers: [
+        SliverToBoxAdapter(
+          child: SizedBox(
+            height: MediaQuery.of(context).size.height,
+            child: const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: IntroductionSection(isMobile: true),
             ),
           ),
-        ],
-      ),
+        ),
+        // Próximas secciones
+      ],
     );
   }
 }
