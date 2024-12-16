@@ -1,14 +1,9 @@
 import 'package:animate_do/animate_do.dart';
 import 'package:flutter/material.dart';
-import 'package:path_drawing/path_drawing.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../config/utils/icons.dart';
 import 'widgets.dart';
-
-Path parseSvgPath(String svgPath) {
-  return parseSvgPathData(svgPath);
-}
 
 class LinkButtons extends StatefulWidget {
   const LinkButtons({super.key});
