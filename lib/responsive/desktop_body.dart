@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/sections/jobs_section.dart';
-import 'package:portfolio/presentation/sections/projects_section.dart';
 
-import '../presentation/sections/introduction_section.dart';
+import '../presentation/sections/sections.dart';
 
 class DesktopBody extends StatelessWidget {
   const DesktopBody({super.key});
@@ -29,6 +27,11 @@ class DesktopBody extends StatelessWidget {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 20),
               child: JobsSection(isMobile: false),
+            ),
+            SizedBox(height: height * 0.2),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20),
+              child: SkillsSection(isMobile: false),
             ),
             const SizedBox(height: 200),
           ]),

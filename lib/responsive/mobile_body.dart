@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio/presentation/sections/jobs_section.dart';
-import 'package:portfolio/presentation/sections/projects_section.dart';
-import '../presentation/sections/introduction_section.dart';
+
+import '../presentation/sections/sections.dart';
 
 class MobileBody extends StatelessWidget {
   const MobileBody({super.key});
@@ -38,6 +37,15 @@ class MobileBody extends StatelessWidget {
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: 15),
             child: JobsSection(isMobile: true),
+          ),
+        ),
+        SliverToBoxAdapter(
+          child: SizedBox(height: height * 0.05),
+        ),
+        const SliverToBoxAdapter(
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: 15),
+            child: SkillsSection(isMobile: true),
           ),
         ),
         const SliverToBoxAdapter(
