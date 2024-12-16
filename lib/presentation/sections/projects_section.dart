@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../../config/data/projects_data.dart';
 import '../widgets/widgets.dart';
 
 class ProjectsSection extends StatelessWidget {
@@ -68,26 +69,9 @@ class ProjectsSection extends StatelessWidget {
                 padding: EdgeInsets.symmetric(
                   horizontal: isMobile ? 4 : 100,
                 ),
-                children: const [
-                  ProjectCard(
-                    title: 'CineRadar',
-                    description: 'Descubre películas y guarda tus favoritas en tu propia colección personalizada.',
-                    image: 'assets/projects/cineradar.png',
-                    tagsLabels: ['flutter', 'dart', 'sqflite'],
-                  ),
-                  ProjectCard(
-                    title: 'CineRadar',
-                    description: 'Descubre películas y guarda tus favoritas en tu propia colección personalizada.',
-                    image: 'assets/projects/cineradar.png',
-                    tagsLabels: ['flutter', 'dart', 'sqflite'],
-                  ),
-                  ProjectCard(
-                    title: 'CineRadar',
-                    description: 'Descubre películas y guarda tus favoritas en tu propia colección personalizada.',
-                    image: 'assets/projects/cineradar.png',
-                    tagsLabels: ['flutter', 'dart', 'sqflite'],
-                  ),
-                ],
+                children: projects.map((project) {
+                  return ProjectCard(project: project);
+                }).toList()
               ),
             ],
           );
