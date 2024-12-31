@@ -3,14 +3,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 import '../../domain/entities/technology_item.dart';
 
+class TechnologyCardState extends ChangeNotifier {
+  static final TechnologyCardState _instance = TechnologyCardState._internal();
+  factory TechnologyCardState() => _instance;
+  TechnologyCardState._internal();
+
+  String? _lastTappedName;
+  String? get lastTappedName => _lastTappedName;
+
+  void setLastTapped(String? name) {
+    _lastTappedName = name;
+    notifyListeners();
+  }
+}
+
 class TechnologyCard extends StatefulWidget {
   final TechnologyItem technology;
   final TextStyle? textStyle;
+  final bool isMobile;
 
   const TechnologyCard({
     super.key,
     required this.technology,
     this.textStyle,
+    required this.isMobile
   });
 
   @override
@@ -18,43 +34,55 @@ class TechnologyCard extends StatefulWidget {
 }
 
 class _TechnologyCardState extends State<TechnologyCard> {
+  final _stateManager = TechnologyCardState();
   bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
     final colors = Theme.of(context).colorScheme;
 
-    return MouseRegion(
-      onEnter: (_) => setState(() => isHovered = true),
-      onExit: (_) => setState(() => isHovered = false),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          SizedBox(
-            height: 90,
-            width: 90,
-            child: SvgPicture.asset(
-              widget.technology.imagePath,
-              placeholderBuilder: (context) => const Center(
-                child: CircularProgressIndicator(),
+    return ListenableBuilder(
+      listenable: _stateManager,
+      builder: (context, _) {
+        return GestureDetector(
+          onTap: widget.isMobile ? () {
+            if (_stateManager.lastTappedName == widget.technology.name) {
+              _stateManager.setLastTapped(null);
+            } else {
+              _stateManager.setLastTapped(widget.technology.name);
+            }
+          } : null,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SizedBox(
+                height: 90,
+                width: 90,
+                child: SvgPicture.asset(
+                  widget.technology.imagePath,
+                  placeholderBuilder: (context) => const Center(
+                    child: CircularProgressIndicator(),
+                  ),
+                  semanticsLabel: widget.technology.name,
+                ),
               ),
-              semanticsLabel: widget.technology.name,
-            ),
-          ),
-          const SizedBox(height: 15),
-          Text(
-            widget.technology.name,
-            style: widget.textStyle,
-            textAlign: TextAlign.center,
-          ),
-          const SizedBox(height: 8),
-          if (isHovered)
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: _buildExperienceStars(colors),
-            ),
-        ],
-      ),
+              const SizedBox(height: 15),
+              Text(
+                widget.technology.name,
+                style: widget.textStyle,
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 8),
+              if ((isHovered && !widget.isMobile) || 
+                (widget.isMobile && _stateManager.lastTappedName == widget.technology.name))
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: _buildExperienceStars(colors),
+                ),
+            ],
+          )
+        );
+      }
     );
   }
 

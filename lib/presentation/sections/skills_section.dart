@@ -49,7 +49,9 @@ class SkillsSection extends StatelessWidget {
               SizedBox(
                 width: screenWidth * factor,
                 child: Text(
-                  'Pasa el ratón sobre una tecnología para ver más detalles',
+                  isMobile
+                    ? 'Pulsa sobre una tecnología para ver más detalles'
+                    : 'Pasa el ratón sobre una tecnología para ver más detalles',
                   style: textTheme.bodyLarge!.copyWith(
                     color: Colors.grey[400],
                   ),
@@ -79,6 +81,7 @@ class SkillsSection extends StatelessWidget {
                       child: TechnologyCard(
                         technology: technologies[index],
                         textStyle: textTheme.bodyLarge,
+                        isMobile: isMobile,
                       ),
                     );
                   },
