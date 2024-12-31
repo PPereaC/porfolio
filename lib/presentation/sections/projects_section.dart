@@ -47,7 +47,9 @@ class ProjectsSection extends StatelessWidget {
               SizedBox(
                 width: screenWidth * factor,
                 child: Text(
-                  'Haz clic en un proyecto para ir al repositorio en GitHub',
+                  isMobile
+                    ? 'Pulsa en un proyecto para ir al repositorio en GitHub'
+                    : 'Haz clic en un proyecto para ir al repositorio en GitHub',
                   style: textTheme.bodyLarge!.copyWith(
                     color: Colors.grey[400],
                   ),
@@ -58,13 +60,13 @@ class ProjectsSection extends StatelessWidget {
               SizedBox(height: isMobile ? height * 0.03 : height * 0.05),
 
               Padding(
-                padding: const EdgeInsets.only(left: 180),
+                padding: isMobile ? const EdgeInsets.symmetric(horizontal: 10) : const EdgeInsets.only(left: 180),
                 child: GridView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: isMobile ? 1 : 3, // 3 proyectos por fila en desktop y 1 en móvil
-                    childAspectRatio: isMobile ? 0.82 : 1,
+                    childAspectRatio: isMobile ? 0.89 : 1,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
                   ),

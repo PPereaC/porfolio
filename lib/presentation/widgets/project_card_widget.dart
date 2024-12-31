@@ -129,7 +129,7 @@ class _ProjectCardState extends State<ProjectCard> {
                               style: textTheme.bodyLarge?.copyWith(
                                 color: Colors.grey[400],
                               ),
-                              maxLines: 2,
+                              maxLines: 3,
                               overflow: TextOverflow.ellipsis,
                             ),
                             const SizedBox(height: 16),
