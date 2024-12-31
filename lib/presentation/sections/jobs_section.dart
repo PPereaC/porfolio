@@ -23,7 +23,7 @@ class JobsSection extends StatelessWidget {
           const maxWidth = 1200.0;
   
           double factor = screenWidth < minWidth 
-            ? 0.8 
+            ? 0.95 
             : (0.4 + ((screenWidth - minWidth) / (maxWidth - minWidth)) * 0.4).clamp(0.4, 0.8);
 
           return Column(
