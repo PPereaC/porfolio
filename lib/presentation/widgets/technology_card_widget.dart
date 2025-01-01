@@ -35,7 +35,6 @@ class TechnologyCard extends StatefulWidget {
 
 class _TechnologyCardState extends State<TechnologyCard> {
   final _stateManager = TechnologyCardState();
-  bool isHovered = false;
 
   @override
   Widget build(BuildContext context) {
@@ -45,13 +44,13 @@ class _TechnologyCardState extends State<TechnologyCard> {
       listenable: _stateManager,
       builder: (context, _) {
         return GestureDetector(
-          onTap: widget.isMobile ? () {
+          onTap: () {
             if (_stateManager.lastTappedName == widget.technology.name) {
               _stateManager.setLastTapped(null);
             } else {
               _stateManager.setLastTapped(widget.technology.name);
             }
-          } : null,
+          },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -73,14 +72,13 @@ class _TechnologyCardState extends State<TechnologyCard> {
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: 8),
-              if ((isHovered && !widget.isMobile) || 
-                (widget.isMobile && _stateManager.lastTappedName == widget.technology.name))
+              if (_stateManager.lastTappedName == widget.technology.name)
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: _buildExperienceStars(colors),
                 ),
             ],
-          )
+          ),
         );
       }
     );

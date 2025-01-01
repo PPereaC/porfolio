@@ -51,7 +51,7 @@ class SkillsSection extends StatelessWidget {
                 child: Text(
                   isMobile
                     ? 'Pulsa sobre una tecnología para ver más detalles'
-                    : 'Pasa el ratón sobre una tecnología para ver más detalles',
+                    : 'Haz clic sobre una tecnología para ver más detalles',
                   style: textTheme.bodyLarge!.copyWith(
                     color: Colors.grey[400],
                   ),
