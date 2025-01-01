@@ -1,6 +1,6 @@
 window.onload = function() {
     // Mantener el título después de que Flutter cargue
-    const originalTitle = "Pablo Perea Campos - Porfolio";
+    const originalTitle = "Mi Porfolio";
     
     // Observar cambios en el título
     const observer = new MutationObserver(function() {
