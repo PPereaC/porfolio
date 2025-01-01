@@ -60,20 +60,18 @@ class ProjectsSection extends StatelessWidget {
               SizedBox(height: isMobile ? height * 0.03 : height * 0.05),
 
               Padding(
-                padding: isMobile
-                  ? const EdgeInsets.all(0)
-                  : const EdgeInsets.only(left: 180),
+                padding: isMobile ? const EdgeInsets.all(0) : const EdgeInsets.symmetric(horizontal: 130),
                 child: GridView(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: isMobile ? 1 : 3,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
+                    crossAxisSpacing: isMobile ? 25 : 40,
+                    mainAxisSpacing: isMobile ? 25 : 0,
                   ),
                   children: projects.map((project) => ProjectCard(project: project, isMobile: isMobile)).toList(),
                 ),
-              )
+              ),
             ],
           );
         },

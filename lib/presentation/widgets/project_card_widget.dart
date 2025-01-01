@@ -28,31 +28,44 @@ class _ProjectCardState extends State<ProjectCard> {
       return tag;
     }).toList();
 
-    return InkWell(
-      onTap: () async {
-        if (await canLaunchUrl(Uri.parse(widget.project.repositoryUrl))) {
-          await launchUrl(Uri.parse(widget.project.repositoryUrl));
-        }
-      },
-      child: Center(
-        child: Container(
-          width: widget.isMobile ? screenWidth * 0.9 : screenWidth * 0.35,
-          height: widget.isMobile ? screenHeight * 0.6 : screenHeight * 0.5,
+    return MouseRegion(
+      onEnter: (_) => setState(() => isHovered = true),
+      onExit: (_) => setState(() => isHovered = false),
+      child: InkWell(
+        onTap: () async {
+          if (await canLaunchUrl(Uri.parse(widget.project.repositoryUrl))) {
+            await launchUrl(Uri.parse(widget.project.repositoryUrl));
+          }
+        },
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 300),
+          transform: isHovered ? (Matrix4.identity()..scale(1.02)) : Matrix4.identity(),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(16),
             border: Border.all(
               color: Colors.white.withOpacity(0.8),
               width: 2,
             ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.white.withOpacity(0.5),
-                spreadRadius: 3,
-                blurRadius: 10,
-                offset: const Offset(0, 0),
-              ),
-            ],
+            boxShadow: isHovered
+                ? [
+                    BoxShadow(
+                      color: colors.secondary.withOpacity(0.7),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset: const Offset(0, 0),
+                    ),
+                  ]
+                : [
+                    BoxShadow(
+                      color: Colors.white.withOpacity(0.5),
+                      spreadRadius: 3,
+                      blurRadius: 10,
+                      offset: const Offset(0, 0),
+                    ),
+                  ],
           ),
+          width: widget.isMobile ? screenWidth * 0.9 : screenWidth * 0.25,
+          height: widget.isMobile ? screenHeight * 0.6 : screenHeight * 0.45,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(16),
             child: Column(
@@ -79,16 +92,21 @@ class _ProjectCardState extends State<ProjectCard> {
                             widget.project.title,
                             style: textTheme.titleMedium,
                           ),
+                          SizedBox(height: widget.isMobile ? 0 : 8),
                           Flexible(
                             child: Text(
                               widget.project.description,
-                              style: textTheme.bodyMedium!.copyWith(
-                                color: Colors.grey[400],
-                              ),
+                              style: widget.isMobile 
+                                ? textTheme.bodyMedium!.copyWith(
+                                  color: Colors.grey[400],
+                                )
+                                : textTheme.bodyLarge!.copyWith(
+                                  color: Colors.grey[400],
+                                ),
                               overflow: TextOverflow.visible,
                             ),
                           ),
-                          SizedBox(height: screenHeight * 0.03),
+                          const Spacer(),
                           Wrap(
                             spacing: 8,
                             runSpacing: 8,
