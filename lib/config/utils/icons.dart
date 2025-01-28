@@ -24,6 +24,6 @@ class AppIcons {
   static const ({String viewBox, String path, String link}) cv = (
     viewBox: '0 0 24 24',
     path: 'M14 2H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V8l-6-6zM6 20V4h7v5h5v11H6zm8-2v-2h-6v2h6zm2-4v-2h-8v2h8z',
-    link: 'https://app.filen.io/#/d/b74e50d8-3e3f-4b09-828a-553e15f0c01c#LvzlvOxoBcBRkJw7PNEUjFjDMxHP4h74',
+    link: 'https://app.filen.io/#/d/38d7f23c-1a13-4937-bab6-12659fa24921#1BjywEjwVs8qEPMT0qvJkqmmY0OXcXsw',
   );
 }
